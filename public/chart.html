@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>chronopti.com : astrochart</title>
+    <link rel="stylesheet" type="text/css" href="styles/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/main.css"/>
+    <script type="text/javascript" src="scripts/jquery-1.6.4.js"></script>
+    <script type="text/javascript" src="scripts/colors.js"></script>
+    <script type="text/javascript" src="scripts/signs.js"></script>
+    <script type="text/javascript" src="scripts/chart.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() 
+        { 
+            var josh = {
+                name: "Josh Hays",
+                birth: { 
+                    date: new Date('7/18/1980 19:30:00 GMT-0400'), 
+                    place: "Schenectady, NY" 
+                },
+                planets: {
+                    sun: { sign: Sign.Cancer, degree: 26 }, 
+                    moon: { sign: Sign.Libra, degree: 12 },
+                    mercury: { sign: Sign.Cancer, degree: 15 },
+                    venus: { sign: Sign.Gemini, degree: 18 },
+                    mars: { sign: Sign.Libra, degree: 4 },
+                    jupiter: { sign: Sign.Virgo, degree: 9 },
+                    saturn: { sign: Sign.Virgo, degree: 22 },
+                    uranus: { sign: Sign.Scorpio, degree: 21 },
+                    neptune: { sign: Sign.Sagittarius, degree: 20 },
+                    pluto: { sign: Sign.Libra, degree: 19 }
+                },
+                houses: []
+            };
+
+            var c = AstroChart(josh);
+        }         
+    </script>
+</head>
+<body>
+
+    <div class="head">
+        <div class="sitename"><a href="index.html">chronopti.com</a></div>
+    </div>
+
+    <div id="wrapper">
+    <div id="content">
+
+        <div id="chartContainer" class="contentBox">
+            <canvas id="chart" width="600" height="600"/>
+        </div>
+
+        <div id="info" class="contentBox">
+        </div>
+
+        <div id="controls" class="contentBox">
+        </div>
+
+    </div>
+    </div>
+
+    <!-- <div class="footer">
+    </div> -->
+
+</body>
+</html>

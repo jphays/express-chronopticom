@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>chronopti.com : circleblast</title>
+    <link rel="stylesheet" type="text/css" href="styles/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/main.css"/>
+    <script type="text/javascript" src="scripts/jquery-1.6.4.js"></script>
+    <script type="text/javascript" src="scripts/circles.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() 
+        { 
+            RenderCircles({ fps: 30 }); 
+        }
+    </script>
+</head>
+<body>
+
+    <div class="head">
+        <div class="sitename"><a href="index.html">chronopti.com</a></div>
+    </div>
+
+    <div id="wrapper">
+    <div id="content">
+
+        <div id="chartContainer" class="contentBox">
+            <canvas id="display" width="600" height="600"/>
+        </div>
+
+    </div>
+    </div>
+
+    <!-- <div class="footer">
+    </div> -->
+
+</body>
+</html>
