@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>chronopti.com : pixelwave</title>
+
+    <link rel="stylesheet" type="text/css" href="styles/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/pixelwave.css"/>
+
+    <script type="text/javascript" src="scripts/jquery-1.6.4.js"></script>
+    <script type="text/javascript" src="scripts/underscore.js"></script>
+
+    <script type="text/javascript" src="scripts/color.js"></script>
+    <script type="text/javascript" src="scripts/saved-colors.js"></script>
+    <script type="text/javascript" src="scripts/display.js"></script>
+
+    <script type="text/javascript" src="scripts/pixelwave.js"></script>
+
+    <script type="text/javascript">
+        var display;
+
+        window.onload = function() 
+        { 
+            window.pw_display = PixelWave({ 
+                fps: 10,
+                canvasContainer: "div#displayContainer",
+                canvasSize: 650,
+                pixelCount: 7,
+                pixelSize: .85,
+                lineWidth: 3
+            })
+
+            window.pw_display.start();
+        }
+    </script>
+</head>
+<body>
+
+    <div class="head">
+        <div class="sitename"><a href="index.html">chronopti.com</a></div>
+    </div>
+
+    <div id="wrapper">
+    <div id="content">
+
+        <div id="displayContainer" class="contentBox" />
+
+    </div>
+    </div>
+
+    <!-- <div class="footer">
+    </div> -->
+
+</body>
+</html>
