@@ -10,16 +10,16 @@
     <script type="text/javascript" src="scripts/chart.js"></script>
 
     <script type="text/javascript">
-        window.onload = function() 
-        { 
+        window.onload = function()
+        {
             var josh = {
                 name: "Josh Hays",
-                birth: { 
-                    date: new Date('7/18/1980 19:30:00 GMT-0400'), 
-                    place: "Schenectady, NY" 
+                birth: {
+                    date: new Date('7/18/1980 19:30:00 GMT-0400'),
+                    place: "Schenectady, NY"
                 },
                 planets: {
-                    sun: { sign: Sign.Cancer, degree: 26 }, 
+                    sun: { sign: Sign.Cancer, degree: 26 },
                     moon: { sign: Sign.Libra, degree: 12 },
                     mercury: { sign: Sign.Cancer, degree: 15 },
                     venus: { sign: Sign.Gemini, degree: 18 },
@@ -33,8 +33,8 @@
                 houses: []
             };
 
-            var c = AstroChart(josh);
-        }         
+            var c = AstroChart();
+        }
     </script>
 </head>
 <body>

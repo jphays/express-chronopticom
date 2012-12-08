@@ -3,7 +3,7 @@
 // =================================
 
 function AstroChart(chartData) {
-    
+
     var chart;
     var info;
     var controls;
@@ -12,9 +12,9 @@ function AstroChart(chartData) {
 
     init();
 
-    function init()  
+    function init()
     {
-        $(window).resize(function() { setSize() });
+        $(window).resize(function() { setSize(); });
 
         chart    = Chart({ chartData: chartData });
         info     = ChartInfo({ chartData: chartData });
@@ -23,9 +23,9 @@ function AstroChart(chartData) {
         setSize();
     }
 
-    function setSize(size) 
+    function setSize(size)
     {
-        if (!size) 
+        if (!size)
         {
             size = Math.min($(window).width() - 300, $(window).height() - 200);
         }
@@ -33,7 +33,7 @@ function AstroChart(chartData) {
         size = Math.max(MIN_SIZE, size);
 
         $("#content").css("width", size + 265 + "px").css("height", size + "px");
-        
+
         chart.setSize(size);
         info.setSize(size);
         controls.setSize(size);
@@ -42,7 +42,7 @@ function AstroChart(chartData) {
     return {
         chartData: chartData,
         chart: chart
-    }
+    };
 }
 
 
@@ -57,15 +57,15 @@ function ChartInfo(options) {
     var element = $("#info").get(0);
     var width   = $(element).width;
     var height  = $(element).height;
-    
+
     renderInfo();
 
-    function renderInfo() 
+    function renderInfo()
     {
-        
+
         $(element).empty();
 
-        if (chartData) 
+        if (chartData)
         {
             $(element).
                 append($("<h2/>").
@@ -73,14 +73,14 @@ function ChartInfo(options) {
                     text(chartData.name)).
                 append($("<div/>").
                     addClass("birthInfo").
-                    text("Born on " + chartData.birth.date.toGMTString() + 
+                    text("Born on " + chartData.birth.date.toGMTString() +
                          " in " + chartData.birth.place)).
                 append($("<div/>").
                     addClass("planets").
                     append($("<h3/>").
                         text("planets")));
         }
-        else 
+        else
         {
             $(element).
                 append($("<div/>").
@@ -89,18 +89,18 @@ function ChartInfo(options) {
         }
 
     }
-    
-    function setSize(size) 
+
+    function setSize(size)
     {
-		width  = 230;
-		height = size - 220;
-        
+        width  = 230;
+        height = size - 220;
+
         $(element).css("width", width + "px").css("height", height + "px");
     }
 
     return {
         setSize: setSize
-    }
+    };
 
 }
 
@@ -113,13 +113,13 @@ function ChartControls(options) {
 
     var chart = options.chart;
 
-	var element = $("#controls").get(0);
-	var width   = $(element).width;
-	var height  = $(element).height;
+    var element = $("#controls").get(0);
+    var width   = $(element).width;
+    var height  = $(element).height;
 
     renderControls();
 
-    function renderControls() 
+    function renderControls()
     {
         var eyeCandyEnabled = chart.eyeCandy.enabled;
         $(element).empty();
@@ -136,12 +136,12 @@ function ChartControls(options) {
                         renderControls();
                     })));
     }
-    
-    function setSize(size) 
+
+    function setSize(size)
     {
         width  = 230;
         height = 165;
-        
+
         $(element).css("width", width + "px").css("height", height + "px");
     }
 
@@ -157,7 +157,7 @@ function ChartControls(options) {
 // ---------------------------------
 
 function Chart(options) {
-    
+
     var chartData = options.chartData;
 
     var eyeCandy = {
@@ -176,25 +176,25 @@ function Chart(options) {
     // canvas width and height
     var width = options.size || 600;
     var height = options.size || 600;
-    
+
     // canvas rendering context
-    var ctx;  
-    
+    var ctx;
+
     var tick;       // animation clock
     var tasks = []; // window.setInterval ids
 
-    function init() 
+    function init()
     {
         var canvas = $(chart).get(0);
 
-        if (canvas.getContext) 
+        if (canvas.getContext)
         {
             ctx = canvas.getContext("2d");
             render();
 
             return true;
         }
-        else 
+        else
         {
             alert("Your browser doesn't seem to support the canvas element.");
 
@@ -205,18 +205,18 @@ function Chart(options) {
 
     // chart rendering
 
-    function render() 
+    function render()
     {
         drawChart();
 
-        if (eyeCandy.enabled && eyeCandy.animate) 
+        if (eyeCandy.enabled && eyeCandy.animate)
         {
             stopAnimation();
             startAnimation();
         }
     }
 
-    function clear() 
+    function clear()
     {
         ctx.clearRect(0, 0, width, height);
 
@@ -224,28 +224,28 @@ function Chart(options) {
         ctx.strokeStyle = "#444";
         ctx.font = "12pt consolas";
         ctx.textAlign = "center";
-        ctx.globalCompositeOperation = 
-            eyeCandy.enabled ? 
-                (Math.random() > 0.8 ? 'xor' : 'destination-over') : 
-                'lighter'; 
+        ctx.globalCompositeOperation =
+            eyeCandy.enabled ?
+                (Math.random() > 0.8 ? 'xor' : 'destination-over') :
+                'lighter';
     }
 
-    function drawChart() 
+    function drawChart()
     {
         ctx.save();
         ctx.translate(width / 2, height / 2);
 
-    	drawBase();
+        drawBase();
 
-    	if (chartData) 
-    	{
-    		drawPlanets();
-    	}
+        if (chartData)
+        {
+            drawPlanets();
+        }
 
         ctx.restore();
     }
 
-    function drawBase() 
+    function drawBase()
     {
         ctx.strokeStyle = "#DDD";
 
@@ -258,24 +258,24 @@ function Chart(options) {
         // drawDegrees();
 
         drawSignDividers(0);
-        drawSignNames(0);
+        //drawSignNames(0);
     }
 
     function drawCircle(radius, thickness)
     {
         ctx.save();
-        
+
         var r = width / 2 * radius;
         ctx.lineWidth = thickness;
-        
+
         ctx.beginPath();
         ctx.arc(0, 0, r, 0, Math.PI * 2, false);
         ctx.stroke();
-        
+
         ctx.restore();
     }
 
-    function drawSignDividers(offset) 
+    function drawSignDividers(offset)
     {
        // drawDividers(offset, 0, 0.5);
        drawDividers(offset, 1, 2);
@@ -288,59 +288,59 @@ function Chart(options) {
         ctx.font = "7pt calibri";
         ctx.fillStyle = "#DDD";
 
-        for (var sign in Sign) 
+        for (var sign in Sign)
         {
             ctx.save();
             ctx.rotate(zang(sign.id * 30 + 15));
-            ctx.fillText(sign, 0, rad(0.908))
+            ctx.fillText(sign, 0, rad(0.908));
             ctx.restore();
         }
     }
 
-    function drawHouseDiviers(houses) 
+    function drawHouseDiviers(houses)
     {
-        
+
     }
 
-    function drawDividers(offset, location, thickness) 
+    function drawDividers(offset, location, thickness)
     {
-        if (eyeCandy.enabled && eyeCandy.randomizeLines) 
+        if (eyeCandy.enabled && eyeCandy.randomizeLines)
         {
             var multiple = Math.floor(Math.random() * 12);
 
-            for (var i = 0; i < 12; i++) 
+            for (var i = 0; i < 12; i++)
             {
                 drawDivider(multiple * (Math.PI * 2 / i) + offset, location, thickness);
-            }    
+            }
         }
-        else 
+        else
         {
-            for (var i = 0; i < 12; i++) 
+            for (var i = 0; i < 12; i++)
             {
-                drawDivider(zang(i * 30), location, thickness)
-            }    
+                drawDivider(zang(i * 30), location, thickness);
+            }
         }
     }
 
-    function drawDivider(angle, location, thickness, color) 
+    function drawDivider(angle, location, thickness, color)
     {
         var start, end;
         ctx.save();
         ctx.lineWidth = thickness;
         if (color) ctx.strokeStyle = color;
 
-        switch(location) 
+        switch(location)
         {
-            case 0: 
+            case 0:
                 start = .15; end = .72; break;
-            case 1: 
+            case 1:
                 start = .75; end = .9; break;
-            case 2: 
-                start = .93; end = 2; 
+            case 2:
+                start = .93; end = 2;
                 if (eyeCandy.enabled) {
-                    ctx.strokeStyle = randColor(true); 
-                    angle = angle + Math.PI; 
-                    ctx.lineWidth = Math.random() > 0.9 ? 9 : thickness; 
+                    ctx.strokeStyle = randColor(true);
+                    angle = angle + Math.PI;
+                    ctx.lineWidth = Math.random() > 0.9 ? 9 : thickness;
                 }
                 break;
         }
@@ -355,50 +355,50 @@ function Chart(options) {
     }
 
 
-    function drawDegrees() 
+    function drawDegrees()
     {
-    	ctx.fillStyle = "#888";
+        ctx.fillStyle = "#888";
         ctx.textAlign = "center";
         ctx.font = "7pt calibri";
 
-    	for (var i = 0; i < 360; i += 10)
-    	{
-    		ctx.save();
-    		ctx.rotate(zang(i));
-    		ctx.fillText(i, 0, rad(0.908));
-    		ctx.restore();
-    	}
+        for (var i = 0; i < 360; i += 10)
+        {
+            ctx.save();
+            ctx.rotate(zang(i));
+            ctx.fillText(i, 0, rad(0.908));
+            ctx.restore();
+        }
     }
 
-    function drawPlanets() 
+    function drawPlanets()
     {
         ctx.textAlign = "center";
         ctx.font = "10pt consolas";
 
-    	if (chartData && chartData.planets) 
-    	{
-	    	for (var planet in chartData.planets) 
-	    	{
-	    		drawPlanet(planet, chartData.planets[planet]);
-	    	}
-    	}
+        if (chartData && chartData.planets)
+        {
+            for (var planet in chartData.planets)
+            {
+                drawPlanet(planet, chartData.planets[planet]);
+            }
+        }
     }
 
-    
-    function drawPlanet(planet, data) 
+
+    function drawPlanet(planet, data)
     {
-		var sign = data.sign;
-		var angle = (data.degree || 15) + (sign.id - 1) * 30;
+        var sign = data.sign;
+        var angle = (data.degree || 15) + (sign.id - 1) * 30;
         var color = randColor(true);
 
-		ctx.save();
-		ctx.rotate(zang(angle));
-		
-		// planet color	
-		ctx.fillStyle = ctx.strokeStyle = color;
-		
-		// write planet name
-		ctx.fillText(planet, 0, rad(0.81));
+        ctx.save();
+        ctx.rotate(zang(angle));
+
+        // planet color
+        ctx.fillStyle = ctx.strokeStyle = color;
+
+        // write planet name
+        ctx.fillText(planet, 0, rad(0.81));
 
         ctx.restore();
 
@@ -411,21 +411,21 @@ function Chart(options) {
 
     function rad(dist)
     {
-	    // returns the y-coordinate for a given radius.
-	    // 0 = center, 1 = edge of canvas at middle.
-    	return dist * -(width) / 2;
+        // returns the y-coordinate for a given radius.
+        // 0 = center, 1 = edge of canvas at middle.
+        return dist * -(width) / 2;
     }
 
-	function zang(deg) 
-	{
-		// returns an angle in radians for a given degree of the zodiac.
-		return -(deg + 90) / 360 * Math.PI * 2;
-	}    
+    function zang(deg)
+    {
+        // returns an angle in radians for a given degree of the zodiac.
+        return -(deg + 90) / 360 * Math.PI * 2;
+    }
 
 
     // resizing
 
-    function setSize(size) 
+    function setSize(size)
     {
         if (!size) {
             size = Math.min($(window).width() - 250, $(window).height() - 200);
@@ -442,34 +442,34 @@ function Chart(options) {
 
     // animation
 
-    function stopAnimation() 
+    function stopAnimation()
     {
         var oldTask;
         while (oldTask = tasks.pop()) window.clearInterval(oldTask);
     }
 
-    function startAnimation() 
+    function startAnimation()
     {
         drawEyeCandy();
         tasks.push(window.setInterval(drawEyeCandy, 2400));
 
-        if (eyeCandy.fadeOut) 
+        if (eyeCandy.fadeOut)
         {
             fadeOut();
             tasks.push(window.setInterval(fadeOut, 50));
         }
     }
 
-    function drawEyeCandy() 
+    function drawEyeCandy()
     {
         clear();
         drawChart();
         if (eyeCandy.drawSpirographs) drawSpiros(2);
-        if (eyeCandy.fadeOut && eyeCandy.randomizeFadeColor) 
+        if (eyeCandy.fadeOut && eyeCandy.randomizeFadeColor)
             eyeCandy.fadeColor = randColor(false);
     }
 
-    function fadeOut() 
+    function fadeOut()
     {
         ctx.globalCompositeOperation = "source-atop";
         ctx.fillStyle = eyeCandy.fadeColor;
@@ -479,51 +479,51 @@ function Chart(options) {
 
     // goodies
 
-    function randColor(goodOnes) 
+    function randColor(goodOnes)
     {
         var colors = Colors.tehcolors;
 
-        if (goodOnes == true) 
+        if (goodOnes == true)
         {
             return colors[Math.floor(Math.random() * colors.length)];
-        } 
-        else 
+        }
+        else
         {
-            return "rgba(" + Math.floor(Math.random() * 255) + ", " + 
-                             Math.floor(Math.random() * 255) + ", " + 
+            return "rgba(" + Math.floor(Math.random() * 255) + ", " +
+                             Math.floor(Math.random() * 255) + ", " +
                              Math.floor(Math.random() * 255) + ", " +
                              "0.03)";
         }
     }
 
-    function drawSpiros(pattern) 
-    {  
+    function drawSpiros(pattern)
+    {
         // pattern 1: rectangular, 3x3
         // pattern 2: radial, 1 central and 8 randomly around edge
 
         ctx.save();
-        
-        if (pattern == 1) 
-        {            
-            for (var i = 0; i < 3; i++) 
+
+        if (pattern == 1)
+        {
+            for (var i = 0; i < 3; i++)
             {
-                for (var j = 0; j < 3; j++) 
+                for (var j = 0; j < 3; j++)
                 {
                     var k = Math.floor(i + Math.random() - 0.5);
                     var l = Math.floor(j + Math.random() - 0.5);
-                      
-                      ctx.save();  
+
+                      ctx.save();
 
                       ctx.strokeStyle = randColor(true);
                       ctx.lineWidth = Math.random() > 0.8 ? 6 : 2;
-                      ctx.translate((width * 0.2) + j * (width * 0.3), (height * 0.2) + i * (height * 0.3));  
-                      drawSpirograph(ctx, (width * 0.06) * (l + 2)/(l + 1), -8 * (k + 3)/(k + 1), 10);  
+                      ctx.translate((width * 0.2) + j * (width * 0.3), (height * 0.2) + i * (height * 0.3));
+                      drawSpirograph(ctx, (width * 0.06) * (l + 2)/(l + 1), -8 * (k + 3)/(k + 1), 10);
 
-                      ctx.restore();  
+                      ctx.restore();
                 }
               }
         }
-        else 
+        else
         {
             ctx.translate(width / 2, height / 2);
 
@@ -532,13 +532,13 @@ function Chart(options) {
                 { trans: 0, size: 0.08 },
                 { trans: 0.46, size: 0.045 },
                 { trans: 0.83, size: 0.05 },
-                { trans: 0.95, size: 0.1 },
+                { trans: 0.95, size: 0.1 }
             ]
 
-            for (var i = 0; i < 9; i++) 
+            for (var i = 0; i < 9; i++)
             {
                 ctx.save();
-                
+
                 var k = i % 3;
                 var l = Math.floor(i / 3);
 
@@ -549,41 +549,41 @@ function Chart(options) {
                 //ctx.rotate(Math.random() * Math.PI * 2);
                 ctx.rotate(multiple * Math.PI * 2 / i)
                 ctx.translate(0, width / 2 * location.trans)
-                
+
                 drawSpirograph(ctx, Math.floor((width * location.size) * (l + 2)/(l + 1)), -8 * (k + 3)/(k + 1), 25);
 
                 ctx.restore();
             }
         }
-          
+
           ctx.restore();
-    }  
+    }
 
     function drawSpirograph(ctx, R, r, O)
-    {  
-        var x1 = R-O;  
-        var y1 = 0;  
-        var i  = 1;  
+    {
+        var x1 = R-O;
+        var y1 = 0;
+        var i  = 1;
 
-        ctx.beginPath();  
-        ctx.moveTo(x1,y1);  
+        ctx.beginPath();
+        ctx.moveTo(x1,y1);
 
-        do 
-        {  
-            if (i>20000) break;  
-            var x2 = (R+r)*Math.cos(i*Math.PI/72) - (r+O)*Math.cos(((R+r)/r)*(i*Math.PI/72))  
-            var y2 = (R+r)*Math.sin(i*Math.PI/72) - (r+O)*Math.sin(((R+r)/r)*(i*Math.PI/72))  
-            ctx.lineTo(x2,y2);  
-            x1 = x2;  
-            y1 = y2;  
-            i++;  
-        } while (x2 != R-O && y2 != 0 );  
+        do
+        {
+            if (i>20000) break;
+            var x2 = (R+r)*Math.cos(i*Math.PI/72) - (r+O)*Math.cos(((R+r)/r)*(i*Math.PI/72));
+            var y2 = (R+r)*Math.sin(i*Math.PI/72) - (r+O)*Math.sin(((R+r)/r)*(i*Math.PI/72));
+            ctx.lineTo(x2,y2);
+            x1 = x2;
+            y1 = y2;
+            i++;
+        } while (x2 != R-O && y2 != 0 );
 
-        ctx.stroke();  
+        ctx.stroke();
     }
 
 
-    if (init()) 
+    if (init())
     {
         return {
             setSize: setSize,
@@ -591,10 +591,10 @@ function Chart(options) {
             startAnimation: startAnimation,
             stopAnimation: stopAnimation,
             eyeCandy: eyeCandy
-        }
+        };
     }
-    else 
-    { 
+    else
+    {
         return null;
     }
 
