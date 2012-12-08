@@ -2,11 +2,13 @@
 //  AstroChart
 // =================================
 
-function AstroChart(chartData) {
+function AstroChart(options) {
 
     var chart;
     var info;
     var controls;
+
+    var chartData = options.chartData;
 
     var MIN_SIZE=350;
 
@@ -16,9 +18,9 @@ function AstroChart(chartData) {
     {
         $(window).resize(function() { setSize(); });
 
-        chart    = Chart({ chartData: chartData });
+        chart    = Chart({ chartData: chartData, eyeCandy: options.eyeCandy });
         info     = ChartInfo({ chartData: chartData });
-        controls = ChartControls({ chart: chart });
+        controls = ChartControls({ chart: chart, eyeCandy: options.eyeCandy });
 
         setSize();
     }
@@ -121,7 +123,7 @@ function ChartControls(options) {
 
     function renderControls()
     {
-        var eyeCandyEnabled = chart.eyeCandy.enabled;
+        var eyeCandyEnabled = chart.eyeCandy.enabled || options.eyeCandy;
         $(element).empty();
         $(element).append(
             $("<p>").
