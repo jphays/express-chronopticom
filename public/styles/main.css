@@ -36,7 +36,7 @@ h1 {
 
 /* header and footer */
 
-div.head { 
+div.head {
     background: #151515;
     height: 40px;
     padding: 5px 10px;
@@ -97,7 +97,7 @@ div.big {
     text-align: center;
 }
 
-div#copyright { 
+div#copyright {
     color: #666;
 }
 
