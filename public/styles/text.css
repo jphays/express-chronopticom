@@ -2,6 +2,10 @@
   font-size: 200px;
   text-align: center;
   -webkit-transition: all 0.8s ease;
+  -moz-transition: all 0.8s ease;
+  -o-transition: all 0.8s ease;
+  -ms-transition: all 0.8s ease;
+  transition: all 0.8s ease;
 }
 .font1 {
   font-family: Almendra;
@@ -16,11 +20,21 @@
 .tasteful {
   text-shadow: 3px 4px 6px rgba(0,0,0,0.4);
   -webkit-text-stroke: 1.5px #ddb;
-  -webkit-mask-image: -webkit-linear-gradient(top, rgba(255,255,255,0), #000, rgba(0,0,0,0.5));
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255,255,255,0)), color-stop(0.33333333333333326, #000), color-stop(1, rgba(0,0,0,0.5)));
+  -webkit-mask-image: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, #000 33.33333333333333%, rgba(0,0,0,0.5) 100%);
+  -webkit-mask-image: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, #000 33.33333333333333%, rgba(0,0,0,0.5) 100%);
+  -webkit-mask-image: -o-linear-gradient(top, rgba(255,255,255,0) 0%, #000 33.33333333333333%, rgba(0,0,0,0.5) 100%);
+  -webkit-mask-image: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, #000 33.33333333333333%, rgba(0,0,0,0.5) 100%);
+  -webkit-mask-image: linear-gradient(top, rgba(255,255,255,0) 0%, #000 33.33333333333333%, rgba(0,0,0,0.5) 100%);
 }
 .shifted {
   text-shadow: 4px 4px 0 #46c;
-  background: -webkit-linear-gradient(top, #c8c8c8, rgba(0,0,0,0.5));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #c8c8c8), color-stop(1, rgba(0,0,0,0.5)));
+  background: -webkit-linear-gradient(top, #c8c8c8 0%, rgba(0,0,0,0.5) 100%);
+  background: -moz-linear-gradient(top, #c8c8c8 0%, rgba(0,0,0,0.5) 100%);
+  background: -o-linear-gradient(top, #c8c8c8 0%, rgba(0,0,0,0.5) 100%);
+  background: -ms-linear-gradient(top, #c8c8c8 0%, rgba(0,0,0,0.5) 100%);
+  background: linear-gradient(top, #c8c8c8 0%, rgba(0,0,0,0.5) 100%);
   -webkit-text-stroke: 1.5px #ccc;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
