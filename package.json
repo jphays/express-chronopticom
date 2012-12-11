@@ -1,6 +1,6 @@
 {
   "name": "chronopticom",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "main": "server",
   "scripts": {
@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "express": "3.0.3",
-    "jade": "*"
+    "jade": "*",
+    "stylus": "*",
+    "nib": "*"
   }
 }
