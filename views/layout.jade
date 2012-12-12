@@ -1,8 +1,14 @@
-doctype 5
+!!! 5
 html
   head
-    title= title
+    title chronopti.com : #{title}
     link(rel='stylesheet', href='/styles/reset.css')
     link(rel='stylesheet', href='/styles/main.css')
+    block styles
+    block scripts
   body
-    block content
+    header
+      a(href='/').sitename chronopti.com
+    div.content
+      block content
+  footer
