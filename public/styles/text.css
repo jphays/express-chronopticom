@@ -83,12 +83,13 @@ div.large {
   font-family: Almendra;
   font-style: italic;
   font-weight: bold;
-  letter-spacing: 5px;
+  letter-spacing: 0.05em;
 }
 .font2 {
   font-family: Alegreya SC;
   font-style: normal;
   font-weight: normal;
+  letter-spacing: 0;
 }
 .tasteful {
   color: #46c;
