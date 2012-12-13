@@ -2,9 +2,13 @@
 html
   head
     title chronopti.com : #{title}
+
     link(rel='stylesheet', href='/styles/reset.css')
     link(rel='stylesheet', href='/styles/main.css')
     block styles
+    
+    script(type="text/javascript", src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js")
+    script(type="text/javascript", src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js")
     block scripts
   body
     header
