@@ -115,6 +115,16 @@ div.large {
   -webkit-background-clip: text;
   -webkit-background-clip: text, border;
 }
+.echo {
+  color: #222;
+  text-shadow: 4px 4px 0 #46c;
+  -webkit-text-stroke: 1.5px #434343;
+}
+.pulse {
+  color: #222;
+  text-shadow: 0px 0px 10px #46c;
+  -webkit-text-stroke: 1.5px #46c;
+}
 /* text styles */
 .textfont1 {
   font-size: 1.6em;

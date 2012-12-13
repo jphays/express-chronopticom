@@ -87,19 +87,31 @@ div.large
     font-weight: normal
     letter-spacing: 0
 
+coolblue = #46C
+
 .tasteful
-    color: #46C;
+    color: coolblue;
     text-shadow: 4px 5px 6px rgba(0, 0, 0, 0.4)
     -webkit-text-stroke: 2.2px #58F
     -webkit-mask-image: linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,1), rgba(0,0,0,0.35))
 
 .shifted
-    text-shadow: 4px 4px 0 #46C;
+    text-shadow: 4px 4px 0 coolblue;
     background: linear-gradient(top, #349, rgba(0, 0, 0, 0.5));
     -webkit-text-stroke: 1.5px #CCC;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text, border;
+
+.echo
+    color: bgcolor
+    text-shadow: 4px 4px 0 coolblue
+    -webkit-text-stroke: 1.5px lighten(bgcolor, 15%)
+
+.pulse
+    color: bgcolor
+    text-shadow: 0px 0px 10px coolblue
+    -webkit-text-stroke: 1.5px coolblue
 
 /* text styles */
 
