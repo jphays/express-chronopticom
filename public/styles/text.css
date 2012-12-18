@@ -91,6 +91,13 @@ div.large {
   font-weight: normal;
   letter-spacing: 0;
 }
+h1 {
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  -o-transition: all 0.8s;
+  -ms-transition: all 0.8s;
+  transition: all 0.8s;
+}
 .tasteful {
   color: #46c;
   text-shadow: 4px 5px 6px rgba(0,0,0,0.4);
