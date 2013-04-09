@@ -5,7 +5,7 @@ function init(app)
     });
 
     app.get('/test', function(req, res) {
-        res.render('test')
+        res.render('test', { title: 'Raphael Test' });
     });
 }
 
