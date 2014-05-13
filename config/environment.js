@@ -9,6 +9,7 @@ function configure(app, express, root)
         app.set('port', process.env.PORT || 3000);
         app.set('views', path.join(root, 'views'));
         app.set('view engine', 'jade');
+        app.use(express.static(path.join(root, 'public')));
         app.use(express.favicon(path.join(root, 'public', 'images', 'favicon.ico')));
         app.use(express.logger('dev'));
         app.use(express.bodyParser());
@@ -18,7 +19,6 @@ function configure(app, express, root)
             src: path.join(root, 'views'),
             dest: path.join(root, 'public'),
             compile: stylusCompile }));
-        app.use(express.static(path.join(root, 'public')));
     });
 
     app.configure('development', function(){
