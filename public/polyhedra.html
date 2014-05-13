@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>chronopti.com : polyhedra</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,600,700,800,400|Titillium+Web:400,200,300,600,700,900,400italic,600italic|Exo+2:400,100,200,300,400italic,600,600italic,800,800italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="styles/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/pixelwave.css"/>
+
+    <script type="text/javascript" src="scripts/libs/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="scripts/libs/three.min.js"></script>
+    <script type="text/javascript" src="scripts/color.js"></script>
+    <script type="text/javascript" src="scripts/saved-colors.js"></script>
+    <script type="text/javascript" src="scripts/polyhedra.js"></script>
+
+    <script type="text/javascript">
+        var display;
+
+        window.onload = function()
+        {
+            Polyhedra({
+                containerSelector: "#three"
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <div class="head">
+        <div class="sitename"><a href="index.html">chronopti.com</a></div>
+    </div>
+
+    <div id="wrapper">
+    <div id="content">
+
+        <div id="three" class="contentBox" />
+
+    </div>
+    </div>
+
+    <!-- <div class="footer">
+    </div> -->
+
+</body>
+</html>

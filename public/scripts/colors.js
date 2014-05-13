@@ -29,7 +29,7 @@ var Colors =
 		'#dbdcdc',
 		'#fdfdfd',
 		// neon yel/grn
-		'9cff00'
+		'#9cff00'
 	]
 	
 }
