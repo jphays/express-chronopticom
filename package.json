@@ -13,5 +13,8 @@
     "stylus": "*",
     "nib": "*",
     "foundation": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
   }
 }
