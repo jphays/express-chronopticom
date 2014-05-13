@@ -102,21 +102,15 @@ h1 {
   color: #46c;
   text-shadow: 4px 5px 6px rgba(0,0,0,0.4);
   -webkit-text-stroke: 2.2px #58f;
-  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #000), color-stop(0.33333333333333326, #000), color-stop(1, rgba(0,0,0,0.35)));
-  -webkit-mask-image: -webkit-linear-gradient(top, #000 0%, #000 33.33333333333333%, rgba(0,0,0,0.35) 100%);
-  -webkit-mask-image: -moz-linear-gradient(top, #000 0%, #000 33.33333333333333%, rgba(0,0,0,0.35) 100%);
-  -webkit-mask-image: -o-linear-gradient(top, #000 0%, #000 33.33333333333333%, rgba(0,0,0,0.35) 100%);
-  -webkit-mask-image: -ms-linear-gradient(top, #000 0%, #000 33.33333333333333%, rgba(0,0,0,0.35) 100%);
-  -webkit-mask-image: linear-gradient(top, #000 0%, #000 33.33333333333333%, rgba(0,0,0,0.35) 100%);
+  -webkit-mask-image: linear-gradient(top, #000, #000, rgba(0,0,0,0.35));
 }
 .shifted {
   text-shadow: 4px 4px 0 #46c;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #349), color-stop(1, rgba(0,0,0,0.5)));
-  background: -webkit-linear-gradient(top, #349 0%, rgba(0,0,0,0.5) 100%);
-  background: -moz-linear-gradient(top, #349 0%, rgba(0,0,0,0.5) 100%);
-  background: -o-linear-gradient(top, #349 0%, rgba(0,0,0,0.5) 100%);
-  background: -ms-linear-gradient(top, #349 0%, rgba(0,0,0,0.5) 100%);
-  background: linear-gradient(top, #349 0%, rgba(0,0,0,0.5) 100%);
+  background: -webkit-linear-gradient(top, #349, rgba(0,0,0,0.5));
+  background: -moz-linear-gradient(top, #349, rgba(0,0,0,0.5));
+  background: -o-linear-gradient(top, #349, rgba(0,0,0,0.5));
+  background: -ms-linear-gradient(top, #349, rgba(0,0,0,0.5));
+  background: linear-gradient(to bottom, #349, rgba(0,0,0,0.5));
   -webkit-text-stroke: 1.5px #ccc;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
