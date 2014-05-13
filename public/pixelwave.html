@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="styles/reset.css"/>
     <link rel="stylesheet" type="text/css" href="styles/pixelwave.css"/>
 
-    <script type="text/javascript" src="scripts/jquery-1.6.4.js"></script>
+    <script type="text/javascript" src="scripts/libs/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="scripts/underscore.js"></script>
 
     <script type="text/javascript" src="scripts/color.js"></script>
@@ -19,9 +19,9 @@
     <script type="text/javascript">
         var display;
 
-        window.onload = function() 
-        { 
-            window.pw_display = PixelWave({ 
+        window.onload = function()
+        {
+            window.pw_display = PixelWave({
                 fps: 10,
                 canvasContainer: "div#displayContainer",
                 canvasSize: 650,
