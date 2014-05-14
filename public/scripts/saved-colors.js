@@ -34,8 +34,7 @@ var Colors =
 
 var ColorCollections = 
 {
-    tehcolors:
-    [
+    tehcolors: [
         Colors.tc_darkgray,
         Colors.tc_midgray,
         Colors.tc_lightgray,
@@ -53,7 +52,18 @@ var ColorCollections =
         Colors.tc_lightcyan,
         Colors.tc_darkgrayblue, 
         Colors.tc_lightgrayblue
+    ],
+    lightColors: [
+        Colors.tc_white,
+        Colors.tc_lightred,
+        Colors.tc_lightorange,
+        Colors.tc_yellow,
+        Colors.tc_lightgreen,
+        Colors.tc_lightblue,
+        Colors.tc_lightcyan,
+        Colors.tc_lightgrayblue
     ]
+
 }
 
 var Gradients =

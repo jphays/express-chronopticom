@@ -12,6 +12,7 @@
         var scene, camera, renderer;
         var reflectionCamera;
         var objects = [];
+        var lights = [];
 
         init();
 
@@ -127,7 +128,8 @@
 
             for (var i = 0; i < 7; i++)
             {
-                var color = getRandomColor();
+                var lightColor = getRandomColor(ColorCollections.lightColors);
+
                 var position = {
                     x: (Math.pow(Math.random(), 2)) * 9 - 3,
                     y: (Math.pow(Math.random(), 1)) * 6 - 2,
@@ -136,21 +138,26 @@
 
                 var size = Math.random();
                 var lightbulb = new THREE.Mesh(
-                    new THREE.IcosahedronGeometry(size * 0.3 + 0.05, Math.floor(size * 1.6)),
+                    new THREE.IcosahedronGeometry(size * 0.3 + 0.05, Math.floor(size * 1.3)),
                     new THREE.MeshPhongMaterial({
-                        color: color,
+                        color: lightColor,
                         shininess: 12,
-                        emissive: color,
-                        specular: color,
+                        emissive: lightColor,
+                        specular: lightColor,
                         shading: THREE.FlatShading,
                         transparent: true,
                         opacity: 0.9,
                         envMap: reflectionCamera.renderTarget,
                         reflectivity: 0.4 }));
-                var pointLight = new THREE.PointLight(color, 1, 100);
+                var pointLight = new THREE.PointLight(lightColor, 1, 100);
 
                 lightbulb.position.set(position.x, position.y, position.z);
                 pointLight.position.set(position.x, position.y, position.z);
+
+                lights.push({
+                    light: pointLight,
+                    bulb: lightbulb
+                })
 
                 scene.add(lightbulb);
                 scene.add(pointLight);
@@ -158,6 +165,7 @@
 
             var ambientLight = new THREE.AmbientLight(0x202020);
             scene.add(ambientLight);
+
         }
 
         function render(time)
@@ -177,6 +185,11 @@
                 objects[i].rotation.z += 0.009;
             }
 
+            for (var i = 0; i < lights.length; i++) {
+                lights[i].bulb.rotation.x -= 0.007;
+                lights[i].bulb.rotation.z -= 0.013;
+            }
+
             camera.position.x = Math.cos( time / 2000 ) * 7; // + (Math.sin(time / 2000) * 1.1);
             camera.position.z = Math.sin( time / 2000 ) * 7; // + (Math.cos(time / 2000) * 1.1);
             camera.position.y = 0; // Math.pow(Math.tan( time / 1000 ), 2) * -1;
@@ -190,9 +203,9 @@
             $.each(objects, function(i, o) { o.visible = true; });
         }
 
-        function getRandomColor()
+        function getRandomColor(colorSet)
         {
-            var colorSet = ColorCollections.tehcolors;
+            if (!colorSet) colorSet = ColorCollections.tehcolors;
             var index = Math.floor(Math.random() * colorSet.length);
             var hexString = colorSet[index].hexString;
             return parseInt(hexString.substr(1), 16);

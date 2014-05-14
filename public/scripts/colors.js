@@ -2,8 +2,7 @@ var Colors =
 {
 
 	// teh colors (by kopykat / modified by elsyx)
-	tehcolors:
-	[
+	tehcolors: [
 		// BLK
 		'#242424',
 		'#454545',
@@ -30,7 +29,17 @@ var Colors =
 		'#fdfdfd',
 		// neon yel/grn
 		'#9cff00'
+	],
+
+	var lightcolors = [
+		'#ff669d',
+		'#beed5f',
+		'#fecf35',
+		'#587aa4',
+		'#46a4ff',
+		'#a3babf',
+		'#fdfdfd',
+		'#9cff00'
 	]
-	
 }
 
