@@ -66,8 +66,10 @@
 
             var geometries = [
                 //new THREE.BoxGeometry(2,2,2),
-                new THREE.IcosahedronGeometry(2, 0),
-                new THREE.IcosahedronGeometry(2.2, 1),
+                new THREE.DodecahedronGeometry(2, 0),
+                //new THREE.DodecahedronGeometry(2.2, 0),
+                //new THREE.IcosahedronGeometry(2, 0),
+                //new THREE.IcosahedronGeometry(2.2, 1),
                 //new THREE.OctahedronGeometry(2, 0),
                 //new THREE.OctahedronGeometry(2.2, 1),
                 //new THREE.PlaneGeometry(100, 100)
