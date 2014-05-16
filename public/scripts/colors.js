@@ -1,4 +1,4 @@
-var Colors = 
+var Colors =
 {
 
 	// teh colors (by kopykat / modified by elsyx)
@@ -31,7 +31,7 @@ var Colors =
 		'#9cff00'
 	],
 
-	var lightcolors = [
+	lightcolors: [
 		'#ff669d',
 		'#beed5f',
 		'#fecf35',

@@ -86,8 +86,8 @@ function ChartInfo(options) {
         {
             $(element).
                 append($("<div/>").
-                    addClass("empty").
-                    text("no chart data loaded."));
+                    addClass("empty")); //.
+                    //text("no chart data loaded."));
         }
 
     }

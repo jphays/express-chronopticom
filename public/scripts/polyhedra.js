@@ -67,9 +67,9 @@
             var geometries = [
                 //new THREE.BoxGeometry(2,2,2),
                 new THREE.DodecahedronGeometry(2, 0),
-                //new THREE.DodecahedronGeometry(2.2, 0),
+                //new THREE.DodecahedronGeometry(2.2, 1),
                 //new THREE.IcosahedronGeometry(2, 0),
-                //new THREE.IcosahedronGeometry(2.2, 1),
+                new THREE.IcosahedronGeometry(2.2, 2),
                 //new THREE.OctahedronGeometry(2, 0),
                 //new THREE.OctahedronGeometry(2.2, 1),
                 //new THREE.PlaneGeometry(100, 100)
@@ -96,12 +96,12 @@
                 scene.add(mesh);
             }
 
-            var p = new THREE.Mesh(
+            var floor = new THREE.Mesh(
                 new THREE.PlaneGeometry(1000, 1000),
                 new THREE.MeshBasicMaterial({ color: 0x222222 })); // getRandomColor() }));
-            p.rotation.x = -Math.PI / 2;
-            p.position.y = -9;
-            scene.add(p);
+            floor.rotation.x = -Math.PI / 2;
+            floor.position.y = -9;
+            scene.add(floor);
 
             // $.each(geometries, function(geometry) {
             //     scene.add(new THREE.Mesh(geometry, material));
