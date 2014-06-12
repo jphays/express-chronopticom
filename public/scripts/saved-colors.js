@@ -28,7 +28,24 @@ var Colors =
     tc_darkcyan:      MakeColor.fromHex('#789ec6'),
     tc_lightcyan:     MakeColor.fromHex('#46a4ff'),
     tc_darkgrayblue:  MakeColor.fromHex('#5e7175'),
-    tc_lightgrayblue: MakeColor.fromHex('#a3babf')
+    tc_lightgrayblue: MakeColor.fromHex('#a3babf'),
+
+    // pantsu (http://dotshare.it/dots/527/)
+    pa_darkgray:    MakeColor.fromHex('#343434'),
+    pa_darkred:     MakeColor.fromHex('#802828'),
+    pa_darkgreen:   MakeColor.fromHex('#909737'),
+    pa_darkyellow:  MakeColor.fromHex('#b27d12'),
+    pa_darkblue:    MakeColor.fromHex('#1e5673'),
+    pa_darkmaroon:  MakeColor.fromHex('#642337'),
+    pa_darkteal:    MakeColor.fromHex('#196271'),
+    pa_lightgray:   MakeColor.fromHex('#b3b3b3'),
+    pa_midgray:     MakeColor.fromHex('#424242'),
+    pa_lightred:    MakeColor.fromHex('#8a3232'),
+    pa_lightgreen:  MakeColor.fromHex('#9ca554'),
+    pa_lightyellow: MakeColor.fromHex('#ddb62b'),
+    pa_lightblue:   MakeColor.fromHex('#1e6a9a'),
+    pa_lightmaroon: MakeColor.fromHex('#7d2d41'),
+    pa_lightteal:   MakeColor.fromHex('#197885')
 
 }
 
@@ -62,6 +79,23 @@ var ColorCollections =
         Colors.tc_lightblue,
         Colors.tc_lightcyan,
         Colors.tc_lightgrayblue
+    ],
+    pantsu: [
+        Colors.pa_darkgray,
+        Colors.pa_darkred,
+        Colors.pa_darkgreen,
+        Colors.pa_darkyellow,
+        Colors.pa_darkblue,
+        Colors.pa_darkmaroon,
+        Colors.pa_darkteal,
+        Colors.pa_lightgray,
+        Colors.pa_midgray,
+        Colors.pa_lightred,
+        Colors.pa_lightgreen,
+        Colors.pa_lightyellow,
+        Colors.pa_lightblue,
+        Colors.pa_lightmaroon,
+        Colors.pa_lightteal
     ]
 
 }
