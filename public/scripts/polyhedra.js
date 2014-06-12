@@ -5,7 +5,6 @@
     {
 
         var containerSelector = options.containerSelector;
-
         var dimensions = { width: 600, height: 600 };
         var $container;
 
@@ -18,18 +17,39 @@
 
         function init()
         {
-            $container = $(containerSelector);
-            $container.css({
-                width: dimensions.width + "px",
-                height: dimensions.height + "px"
-            });
 
+            initContainer();
             initRenderer();
             initScene();
             initObjects();
             initLights();
 
             render();
+
+        }
+
+        function initContainer()
+        {
+            $container = $(containerSelector);
+            $(window).on("resize", function() 
+            {
+                updateDimensions();
+            });
+
+            updateDimensions();
+        }
+
+        function updateDimensions() 
+        {
+            var size = Math.min(window.innerWidth, window.innerHeight) - 200;
+            dimensions = { width: size, height: size };
+
+            $container.css({
+                width: dimensions.width + "px",
+                height: dimensions.height + "px"
+            });
+
+            if (renderer) renderer.setSize(dimensions.width, dimensions.height);
         }
 
         function initRenderer()
@@ -69,11 +89,12 @@
                 new THREE.PlaneGeometry(1000, 1000),
                 new THREE.MeshBasicMaterial({ color: 0x222222 })); // getRandomColor() }));
             floor.rotation.x = -Math.PI / 2;
-            floor.position.y = -9;
+            floor.position.y = -5;
             scene.add(floor);
 
             createSun();
             createPlanets(7);
+            //createPyramids();
 
         }
 
@@ -225,6 +246,43 @@
                 scene.add(lightbulb);
                 scene.add(pointLight);
             }
+
+        }
+
+        function createPyramids() 
+        {
+
+            var pyramids = [];
+            var colors = [
+                0x9cff00,
+                0xff669d,
+                0x587aa4,
+                0xbeed5f ];
+
+            for (var i = 0; i < 4; i++) 
+            {
+                pyramids.push(new THREE.Mesh(
+                new THREE.OctahedronGeometry(1),
+                new THREE.MeshPhongMaterial({
+                        color: colors[i],
+                        shading: THREE.FlatShading,
+                        shininess: 30,
+                        transparent: true,
+                        opacity: 0.9,
+                        envMap: reflectionCamera.renderTarget,
+                        reflectivity: 0.4 })));                
+            }
+
+            var pos = 10;
+            pyramids[0].position.set(pos, -5, 0);
+            pyramids[1].position.set(0, -5, -pos);
+            pyramids[2].position.set(-pos, -5, 0);
+            pyramids[3].position.set(0, -5, pos);
+
+            scene.add(pyramids[0]);
+            scene.add(pyramids[1]);
+            scene.add(pyramids[2]);
+            scene.add(pyramids[3]);
 
         }
 
