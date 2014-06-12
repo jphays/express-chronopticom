@@ -29,7 +29,10 @@ function RenderCircles(options) {
             window.setInterval(function() {
                 tick += 1;
                 clear(ctx);
-                drawCircleGrid(ctx, sineBrightness);
+                drawCircleGrid(
+                    ctx, 
+                    stairwayGrid,
+                    sineBrightness);
             }, delay);
         }
 
@@ -47,23 +50,32 @@ function RenderCircles(options) {
     //     window.setTimeout(function() { scheduleRedraw(drawFunc) }, delay);
     // }
 
-    function randomBrightness(tick) 
+    function randomBrightness(x, y, tick) 
     {
         var bright = Math.max(0.7, Math.random())
         return bright;
     }
 
-    function sineBrightness(tick) 
+    function sineBrightness(x, y, tick) 
     {
         var rate = fps / 2;
         var bright = .8 - (Math.sin(tick / rate) * 0.2);
         return bright;
     }
 
-    function drawCircleGrid(ctx, brightFunc) 
+    function stairwayGrid(x, y, tick, rate) 
     {
-        var bright = brightFunc(tick);
+        return ((x + 2) % (Math.floor(tick / rate) % (circleCount - 2)) == 0 || 
+                (y + 3) % (Math.floor(tick / rate) % (circleCount + 3)) == 0)
+    }
 
+    function test(x, y, tick, rate) 
+    {
+        return (x == tick % 10 || y == tick % 10);
+    }
+
+    function drawCircleGrid(ctx, renderFunc, brightFunc) 
+    {
         var size = canvasSize / circleCount;
         var circles = circleCount;
         var factor = 255.0 / circles;
@@ -73,6 +85,8 @@ function RenderCircles(options) {
         {
             for (var j = 0; j < circles; j++) 
             {
+                var bright = brightFunc(i, j, tick);
+
                   var sr = Math.floor(255 - (255 * bright));
                   var sg = Math.floor(255 - factor * i * bright);
                   var sb = Math.floor(255 - factor * j * bright);
@@ -88,12 +102,8 @@ function RenderCircles(options) {
                         (size / 2) + i * size, 
                         (size / 2) - circleGap, 0, Math.PI * 2, true);
 
-                if ((i + 2) % (Math.floor(tick / rate) % (circles - 2)) == 0 || 
-                    (j + 3) % (Math.floor(tick / rate) % (circles + 3)) == 0) {
-                    ctx.fill();
-                } else { 
-                    ctx.stroke();
-                }
+                if (renderFunc(i, j, tick, rate)) ctx.fill();
+                else ctx.stroke();
             }
         }
     }
