@@ -1,23 +1,35 @@
 function RenderCircles(options) {
     
-    var fps = options.fps || 20;
+    var fps = options.fps || 35;
     var canvasSize = options.canvasSize || 600;
-    var circleCount = options.circleCount || Math.floor(Math.random() * 21) + 4;
-    var circleGap = options.circleGap || Math.floor(Math.random() * 5) + 2;
+    
+    var circleCount;
+    var circleGap;
+    var resetFrame;
 
     var ctx;
     var tick;
+    var frameTime;
     var delay = 1000 / fps;
 
     init();
 
     function init() 
     {
+        initValues();
+        createCanvas();
+        render();
+    }
+    
+    function initValues() 
+    {
         tick = 0;
-        renderCanvas();
+        resetFrame = Math.floor(Math.random() * 100) + 20;
+        circleCount = Math.floor(Math.random() * 21) + 4;
+        circleGap = Math.floor(Math.random() * 5) + 2;
     }
 
-    function renderCanvas() 
+    function createCanvas() 
     {
         var canvas = $("canvas#display").get(0);
 
@@ -25,15 +37,30 @@ function RenderCircles(options) {
         {
             ctx = canvas.getContext("2d");
             ctx.lineWidth = 2;
+            requestAnimationFrame(render);
+        }
 
-            window.setInterval(function() {
-                tick += 1;
-                clear(ctx);
-                drawCircleGrid(
-                    ctx, 
-                    stairwayGrid,
-                    sineBrightness);
-            }, delay);
+    }
+
+    function render(time) 
+    {
+        requestAnimationFrame(render);
+
+        if (time - frameTime > delay || !frameTime) 
+        {
+            tick += 1;
+            frameTime = time;
+
+            clear(ctx);
+            drawCircleGrid(
+                ctx, 
+                stairwayGrid,
+                sineBrightness);
+        }
+
+        if (tick >= resetFrame) 
+        {
+            initValues();
         }
 
     }
