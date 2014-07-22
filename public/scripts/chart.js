@@ -115,6 +115,8 @@ function ChartControls(options) {
 
     var chart = options.chart;
 
+    var animating = chart.eyeCandy.enabled || options.eyeCandy;
+
     var element = $("#controls").get(0);
     var width   = $(element).width;
     var height  = $(element).height;
@@ -123,18 +125,17 @@ function ChartControls(options) {
 
     function renderControls()
     {
-        var eyeCandyEnabled = chart.eyeCandy.enabled || options.eyeCandy;
         $(element).empty();
         $(element).append(
             $("<p>").
-                text("Eye candy: ").
+                text("Animation: ").
                 append($("<span>").
                     addClass("linkish").
-                    text(eyeCandyEnabled ? "stop" : "start").
+                    text(animating ? "stop" : "start").
                     click(function() {
-                        chart.eyeCandy.enabled = !eyeCandyEnabled;
-                        eyeCandyEnabled ? chart.stopAnimation() : chart.startAnimation();
-
+                        animating = !animating;
+                        animating ? chart.startAnimation() : chart.stopAnimation();
+                        $(this).text(animating ? "stop" : "start")
                         renderControls();
                     })));
     }
