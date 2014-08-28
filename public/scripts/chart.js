@@ -430,14 +430,17 @@ function Chart(options) {
 
     function setSize(size)
     {
-        if (!size) {
+        if (!size) 
+        {
             size = Math.min($(window).width() - 250, $(window).height() - 200);
         }
 
         width = height = size;
+        var pixelRatio = window.devicePixelRatio || 1;
 
         $(container).css("width", width + "px").css("height", height + "px");
-        $(chart).attr("width", width).attr("height", height);
+        $(chart).css("width", width + "px").css("height", height + "px");
+        $(chart).attr("width", width * pixelRatio).attr("height", height * pixelRatio);
 
         render();
     }
