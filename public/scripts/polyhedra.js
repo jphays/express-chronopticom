@@ -301,17 +301,17 @@
             //cube.rotation.z += 0.009;
 
             for (var i = 0; i < objects.length; i++) {
-                objects[i].rotation.x += 0.015;
-                objects[i].rotation.z += 0.009;
+                objects[i].rotation.x = time / 10000 * 5;
+                objects[i].rotation.z = time / 10000 * 3;
             }
 
             for (var i = 0; i < planets.length; i++) {
-                planets[i].bulb.rotation.x -= 0.007;
-                planets[i].bulb.rotation.z -= 0.013;
+                planets[i].bulb.rotation.x = time / 10000 * 2;
+                planets[i].bulb.rotation.z = time / 10000 * 7;
             }
 
-            camera.position.x = Math.cos( time / 2000 ) * 7; // + (Math.sin(time / 2000) * 1.1);
-            camera.position.z = Math.sin( time / 2000 ) * 7; // + (Math.cos(time / 2000) * 1.1);
+            camera.position.x = Math.cos( time / 6000 ) * 7; // + (Math.sin(time / 2000) * 1.1);
+            camera.position.z = Math.sin( time / 6000 ) * 7; // + (Math.cos(time / 2000) * 1.1);
             camera.position.y = 0; // Math.pow(Math.tan( time / 1000 ), 2) * -1;
             camera.lookAt(scene.position);
         }
